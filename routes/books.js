@@ -139,21 +139,16 @@ router.delete('/:id', async (req, res) => {
 
 async function renderNewPage(res, book, hasError = false) {
 
-    console.log('Rendering new page')
-
     renderFormPage(res, book, 'new', hasError)
 }
 
 async function renderEditPage(res, book, hasError = false) {
-
-    console.log('rendering edit page')
 
     renderFormPage(res, book, 'edit', hasError)
 }
 
 async function renderFormPage(res, book, form, hasError = false) {
 
-    console.log('Form at start of function: ', form);
     try {
         const authors = await Author.find();
         const params = {
@@ -161,7 +156,7 @@ async function renderFormPage(res, book, form, hasError = false) {
             book: book
         }
         if (hasError) {
-            console.log('Form upon error handle: ', form);
+       
             if (form == 'edit') {
                 params.errorMessage = 'Error Updating Book'
             } else {
